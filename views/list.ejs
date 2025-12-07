@@ -19,12 +19,12 @@ The '-' in the tags (<%- -%>) trims the newline characters from the output, keep
   A loop is started here to iterate over the 'newListItems' array.
   'newListItems' is an array of to-do items passed from the Express route.
   -->
-    <% newListItems.forEach(({uid, text})=> { %>
+    <% newListItems.forEach(function(item){ %>
       <div class="item">
         <form class="item" action="/delete" method="post">
-          <input type="checkbox" name="uid" value="<%= uid %>" onclick="this.form.submit()">
+          <input type="checkbox" name="uid" value="<%= item._id %>" onclick="this.form.submit()">
           <p>
-            <%= text %>
+            <%= item.name %>
           </p>
           <input type="hidden" name="listName" value="<%= listTitle %>">
         </form>
